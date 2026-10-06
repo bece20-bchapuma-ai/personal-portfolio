@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demystifying Decentralized Networks — Ben Chapuma</title>
+  <meta name="description" content="An engineering look at how blockchain reshapes modern finance — consensus, hashing, and smart contracts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="site-header__logo">Ben Chapuma / Computer Engineer</a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">Home</a></li>
+          <li><a class="site-nav__link" href="about.html">About</a></li>
+          <li><a class="site-nav__link" href="projects.html">Projects</a></li>
+          <li><a class="site-nav__link" href="articles.html" aria-current="page">Articles</a></li>
+          <li><a class="site-nav__link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a href="assets/docs/cv.pdf" class="btn btn--cv" download aria-label="Download CV (PDF)">↓ CV</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <span aria-hidden="true" data-theme-icon>☀</span>
+          <span data-theme-label>Light</span>
+        </button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav container" id="mobile-nav" data-open="false" aria-label="Mobile">
+      <ul class="mobile-nav__list">
+        <li><a class="mobile-nav__link" href="index.html">Home</a></li>
+        <li><a class="mobile-nav__link" href="about.html">About</a></li>
+        <li><a class="mobile-nav__link" href="projects.html">Projects</a></li>
+        <li><a class="mobile-nav__link" href="articles.html" aria-current="page">Articles</a></li>
+        <li><a class="mobile-nav__link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <article class="container article-body">
+      <div class="article__meta">
+        <time class="article__date" datetime="2026-09-22">September 22, 2026</time>
+        <span class="tag">Blockchain &amp; Crypto</span>
+      </div>
+      <h1>Demystifying Decentralized Networks: How Blockchain Is Reshaping Modern Finance</h1>
+
+      <p>
+        A blockchain is a shared record of transactions that many independent computers
+        agree on, without any one of them being in charge. That single idea — agreement
+        without a central authority — is what makes it interesting, and it's why the
+        technology has moved from a niche mailing list in 2008 to something banks,
+        regulators and payment companies now argue about seriously. In this article I'll
+        walk through the three pieces that make it work in practice: consensus, hashing,
+        and smart contracts. I'll finish with an honest look at what's actually changing
+        in finance and what's still speculation.
+      </p>
+
+      <h2>Consensus: how strangers agree without a referee</h2>
+      <p>
+        A normal payment system relies on a trusted middleman — the bank — to keep the
+        ledger and stop you from spending the same money twice. A blockchain replaces
+        that middleman with a set of rules that thousands of participants enforce
+        together. The two dominant rules today are proof-of-work and proof-of-stake.
+      </p>
+      <p>
+        Proof-of-work asks participants (miners) to solve a hard mathematical puzzle
+        before they can add the next block. The work is deliberately expensive, which
+        makes rewriting history similarly expensive — an attacker would have to
+        outspend the entire network to fake a transaction. Bitcoin still uses this.
+        Proof-of-stake replaces computation with economic commitment: validators lock
+        up coins as collateral, and if they try to cheat they lose that stake.
+        Ethereum moved to this model in 2022 because it uses dramatically less energy
+        for the same security guarantee. Different costs, same goal: make dishonesty
+        more expensive than honesty.
+      </p>
+
+      <h2>Cryptographic hashing: the glue that holds the chain</h2>
+      <p>
+        A hash function takes any input — a single character or an entire novel — and
+        produces a fixed-length fingerprint. Change one comma in the input and the
+        fingerprint changes completely. Crucially, you can't run the process backwards:
+        given a fingerprint, there's no shortcut to recover the original data. That
+        one-way property is what gives blockchains their immutability.
+      </p>
+      <p>
+        Each block stores its own list of transactions, plus the hash of the previous
+        block. If someone tried to alter an old transaction, the hash of that block
+        would change, breaking the link to every block that came after it, and the
+        network would reject the altered chain. The cost of rewriting history grows
+        exponentially the deeper the transaction sits, which is why the phrase
+        "irreversible" gets used so often in this space.
+      </p>
+
+      <h2>Smart contracts and what they actually execute</h2>
+      <p>
+        A smart contract is code that lives on the blockchain and runs automatically
+        when certain conditions are met. On Ethereum it's typically written in a
+        language called Solidity and deployed to an address the way a regular program
+        is deployed to a server. Once it's live, no one — not even the person who
+        wrote it — can quietly change it.
+      </p>
+      <p>
+        The classic example is an escrow agreement: buyer and seller lock funds in a
+        contract, and the contract releases them only when both sides confirm delivery
+        or a dispute process resolves. There's no escrow agent taking a fee. The
+        appeal is obvious. The risk is also obvious: if the code has a bug, there's
+        no help desk. One famous 2016 exploit drained roughly $50 million from a
+        project called The DAO, and the event is still studied in security courses
+        because it shows that immutability cuts both ways.
+      </p>
+
+      <h2>Where this leaves modern finance</h2>
+      <p>
+        The honest position, in my view, is that two things are simultaneously true.
+        Stablecoins and cross-border settlement rails are genuinely useful and are
+        quietly being adopted by serious financial institutions because they solve a
+        real problem — moving value across borders without waiting days for
+        correspondent banks. At the same time, a huge amount of what happens in the
+        crypto market is speculation dressed up as innovation, and treating every new
+        token as a step forward is a mistake.
+      </p>
+      <p>
+        For engineering students, the interesting parts aren't the price charts.
+        They're the problems underneath: how do you design a system that stays
+        consistent when a third of the participants are offline or hostile? How do you
+        write contracts that are provably correct before they hold real money? Those
+        questions are useful well beyond crypto, and they're the reason I think it's
+        worth spending a term learning the fundamentals — even if the specific tokens
+        don't survive the decade.
+      </p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Ben Chapuma. Built with HTML, CSS &amp; JavaScript.</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script defer>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

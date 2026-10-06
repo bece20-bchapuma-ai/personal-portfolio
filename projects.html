@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Ben Chapuma</title>
+  <meta name="description" content="Selected hardware, software and web projects by Ben Chapuma.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="site-header__logo">Ben Chapuma / Computer Engineer</a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">Home</a></li>
+          <li><a class="site-nav__link" href="about.html">About</a></li>
+          <li><a class="site-nav__link" href="projects.html" aria-current="page">Projects</a></li>
+          <li><a class="site-nav__link" href="articles.html">Articles</a></li>
+          <li><a class="site-nav__link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a href="assets/docs/cv.pdf" class="btn btn--cv" download aria-label="Download CV (PDF)">↓ CV</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <span aria-hidden="true" data-theme-icon>☀</span>
+          <span data-theme-label>Light</span>
+        </button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav container" id="mobile-nav" data-open="false" aria-label="Mobile">
+      <ul class="mobile-nav__list">
+        <li><a class="mobile-nav__link" href="index.html">Home</a></li>
+        <li><a class="mobile-nav__link" href="about.html">About</a></li>
+        <li><a class="mobile-nav__link" href="projects.html" aria-current="page">Projects</a></li>
+        <li><a class="mobile-nav__link" href="articles.html">Articles</a></li>
+        <li><a class="mobile-nav__link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="container page-header">
+      <span class="page-header__badge">MY WORK</span>
+      <h1>Featured Engineering &amp; Software Projects</h1>
+      <p class="page-header__lead">A collection of hardware prototypes, circuit designs, and web applications I've built.</p>
+    </section>
+
+    <section class="container" aria-label="Selected projects">
+      <div class="card-grid">
+
+        <article class="card">
+          <img class="card__media" src="assets/images/project-acme.png" alt="Dashboard screenshot of the Acme quotation system">
+          <h2 class="card__title">Acme Dashboard</h2>
+          <p class="card__body">
+            A quotation system that keeps track of all quotations performed by customers
+            and their equivalent statuses, developed using Next.JS, PostgreSQL, and TailwindCSS.
+          </p>
+          <div class="card__footer">
+            <ul class="card__tags" aria-label="Technologies used">
+              <li class="tag">Next.JS</li>
+              <li class="tag">PostgreSQL</li>
+              <li class="tag">TailwindCSS</li>
+            </ul>
+            <a class="card__link" href="#acme" aria-label="View details for Acme Dashboard">View Details →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img class="card__media" src="assets/images/project-rydberg.png" alt="HR management dashboard from the Rydberg Starck HRMS">
+          <h2 class="card__title">Rydberg Starck HRMS</h2>
+          <p class="card__body">
+            A human resource management system for Rydberg Starck Limited that I built during
+            my attachment. Manages employee records, attendance and payroll workflows.
+          </p>
+          <div class="card__footer">
+            <ul class="card__tags" aria-label="Technologies used">
+              <li class="tag">Next.JS</li>
+              <li class="tag">PostgreSQL</li>
+              <li class="tag">TailwindCSS</li>
+            </ul>
+            <a class="card__link" href="#rydberg" aria-label="View details for Rydberg Starck HRMS">View Details →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img class="card__media" src="assets/images/project-embedded.jpg" alt="Embedded power-monitoring prototype on a breadboard">
+          <h2 class="card__title">Embedded Power Monitor</h2>
+          <p class="card__body">
+            A microcontroller-based power monitoring prototype that samples voltage and current
+            on a load and streams readings over serial for logging and graphing.
+          </p>
+          <div class="card__footer">
+            <ul class="card__tags" aria-label="Technologies used">
+              <li class="tag">C</li>
+              <li class="tag">STM32</li>
+              <li class="tag">KiCAD</li>
+            </ul>
+            <a class="card__link" href="#power" aria-label="View details for Embedded Power Monitor">View Details →</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="container" aria-labelledby="github-heading">
+      <div class="page-header">
+        <span class="page-header__badge">FROM GITHUB</span>
+        <h2 id="github-heading">Latest repositories</h2>
+        <p class="page-header__lead">A live feed of my most recent public work, pulled from the GitHub API.</p>
+      </div>
+
+      <div class="repos" id="repos" aria-live="polite" aria-busy="true">
+        <p class="repos__status">Loading repositories…</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Ben Chapuma. Built with HTML, CSS &amp; JavaScript.</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/github.js" defer></script>
+  <script defer>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
