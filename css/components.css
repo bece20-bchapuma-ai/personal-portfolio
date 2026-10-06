@@ -369,6 +369,22 @@
 .not-found__title { font-size: var(--fs-h2); }
 .not-found__text  { max-width: 45ch; }
 
+.not-found__tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--error);
+  border-radius: var(--radius-pill);
+  color: var(--error);
+  background: var(--error-bg);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.not-found__code {
+  margin-top: var(--space-2);
+}
+
 /* ---------- GITHUB REPOS ---------- */
 .repos {
   display: grid;
