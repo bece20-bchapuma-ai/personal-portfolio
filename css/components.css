@@ -385,3 +385,44 @@
 .repo__title a:hover { color: var(--accent); }
 .repo__meta { display: flex; gap: var(--space-4); font-size: var(--fs-small); color: var(--text-muted); }
 .repos__status { text-align: center; padding: var(--space-6); color: var(--text-muted); }
+
+/* ---------- ABOUT ---------- */
+.about {
+  padding-block: var(--space-10) var(--space-12);
+}
+@media (min-width: 1024px) {
+  .about { padding-block: var(--space-16) var(--space-20); }
+}
+
+.about__grid {
+  display: grid;
+  gap: var(--space-8);
+}
+@media (min-width: 1024px) {
+  .about__grid {
+    grid-template-columns: 420px 1fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+}
+
+.about__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: var(--border);
+  background: var(--bg-surface);
+  aspect-ratio: 3 / 4;
+}
+.about__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about__content h1 { margin: var(--space-3) 0 var(--space-6); }
+.about__content p { margin-bottom: var(--space-4); }
+.about__skills-title {
+  margin-top: var(--space-8);
+  font-size: var(--fs-h3);
+}
