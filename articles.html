@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles — Ben Chapuma</title>
+  <meta name="description" content="Technical writing on blockchain, embedded systems and web engineering by Ben Chapuma.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="site-header__logo">Ben Chapuma / Computer Engineer</a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">Home</a></li>
+          <li><a class="site-nav__link" href="about.html">About</a></li>
+          <li><a class="site-nav__link" href="projects.html">Projects</a></li>
+          <li><a class="site-nav__link" href="articles.html" aria-current="page">Articles</a></li>
+          <li><a class="site-nav__link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a href="assets/docs/cv.pdf" class="btn btn--cv" download aria-label="Download CV (PDF)">↓ CV</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <span aria-hidden="true" data-theme-icon>☀</span>
+          <span data-theme-label>Light</span>
+        </button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav container" id="mobile-nav" data-open="false" aria-label="Mobile">
+      <ul class="mobile-nav__list">
+        <li><a class="mobile-nav__link" href="index.html">Home</a></li>
+        <li><a class="mobile-nav__link" href="about.html">About</a></li>
+        <li><a class="mobile-nav__link" href="projects.html">Projects</a></li>
+        <li><a class="mobile-nav__link" href="articles.html" aria-current="page">Articles</a></li>
+        <li><a class="mobile-nav__link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="container page-header">
+      <span class="page-header__badge">WRITING &amp; THOUGHTS</span>
+      <h1>Featured Articles &amp; Engineering Notes</h1>
+      <p class="page-header__lead">Technical write-ups on embedded systems, circuit design, and software architecture.</p>
+    </section>
+
+    <section class="container" aria-label="Featured article">
+      <div class="card-grid" style="grid-template-columns: 1fr;">
+        <article class="card">
+          <div class="article__meta">
+            <time class="article__date" datetime="2026-09-22">September 22, 2026</time>
+            <span class="tag">Blockchain &amp; Crypto</span>
+          </div>
+          <h2 class="card__title">Demystifying Decentralized Networks: How Blockchain Is Reshaping Modern Finance</h2>
+          <p class="card__body">
+            An engineering exploration of consensus algorithms, cryptographic hashing,
+            and smart contract execution. We analyze how decentralized ledger technology
+            provides trustless transaction security and evaluate the future of digital
+            currencies.
+          </p>
+          <div class="card__footer">
+            <span></span>
+            <a class="card__link" href="article.html">Read Full Article →</a>
+          </div>
+        </article>
+      </div>
+
+      <div style="display: flex; justify-content: center; padding: var(--space-8) 0 var(--space-12);">
+        <a class="btn btn--secondary" href="articles.html">Explore More Articles →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Ben Chapuma. Built with HTML, CSS &amp; JavaScript.</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script defer>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
