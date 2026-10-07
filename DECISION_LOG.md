@@ -155,3 +155,42 @@ on the assignment's list of allowed hosts.
 
 **What I gave up:** two URLs to keep in sync in the README, and having to trust
 two platforms' uptime rather than one.
+
+## 9. Web asset filenames — lowercase extensions enforced
+
+**Decided:** Every image file in `assets/images/` uses a lowercase extension
+(`.jpg`, `.png`), and every reference to it in the HTML matches that case
+exactly.
+
+**Alternatives considered:**
+
+- Leaving the extensions as the camera, editor, or drag-and-drop process
+  happened to name them (`.JPG`, `.PNG` mixed case)
+- Trusting that "it works on my machine" was enough
+
+**Why this:** Git on Windows is case-insensitive, so `hero.JPG` and `hero.jpg`
+resolve to the same file on my laptop — everything looked correct locally. But
+GitHub Pages runs on Linux, where those are two different files. When I pushed
+the site, three of my image files (`hero.JPG`, `about.JPG`,
+`project-embedded.JPG`) had uppercase extensions while the HTML referenced
+them in lowercase. The live site returned a 404 for each, and the browser
+rendered the broken-image icon with the alt text visible. The other two images
+(`project-acme.png`, `project-rydberg.png`) happened to have lowercase
+extensions and loaded fine, which confirmed the diagnosis.
+
+I fixed it by renaming the three files to lowercase with `git mv` using a
+temporary intermediate name (`hero.JPG` → `hero.jpg.tmp` → `hero.jpg`).
+The intermediate step is necessary because Git on Windows will silently ignore
+a case-only rename — Windows considers the file unchanged, so Git never
+records the difference. Only by renaming through an unrelated name does Git
+see the delete-and-add and stage it correctly.
+
+**What I gave up:** nothing functional — the site works identically. But I lost
+time on a bug that only appears in production, not locally, which is the worst
+kind. Going forward I would apply lowercase filenames to every web asset from
+the moment it's exported, and prefer `git mv` over the file explorer for any
+rename, so the change is always recorded in the commit history.
+
+**Lesson:** "Works on my machine" is not a deployment guarantee. Any asset that
+ships to the web should be named for the case-sensitive filesystem that will
+eventually serve it, not the one on the developer's laptop.
