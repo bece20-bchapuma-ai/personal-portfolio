@@ -25,6 +25,7 @@ No build step — this is plain HTML, CSS and JavaScript.
 ```bash
 git clone https://github.com/bece20-bchapuma-ai/personal-portfolio.git
 cd personal-portfolio
+```
 Then either:
 
 Open index.html directly in your browser, or
