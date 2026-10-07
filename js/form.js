@@ -1,9 +1,9 @@
 /* ==========================================================================
    form.js — custom contact form validation
-   - Runs on submit (with novalidate so no browser defaults appear)
+   - Runs on submit (novalidate so no browser defaults appear)
    - Shows our own error messages under each field
    - Focuses the first invalid field on error
-   - On success: either posts to Netlify (if available) or shows success message
+   - On success: posts to Netlify Forms (encoded as URLSearchParams)
    ========================================================================== */
 
 (function () {
@@ -13,8 +13,8 @@
   if (!form) return;
 
   const successEl = document.getElementById('form-success');
+  const submitBtn = form.querySelector('button[type="submit"]');
 
-  // Simple but practical email check
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   function setFieldError(fieldName, message) {
@@ -64,7 +64,6 @@
     if (successEl) successEl.hidden = true;
   }
 
-  // Live-clear errors as the user fixes them
   form.addEventListener('input', function (event) {
     const field = event.target.closest('[data-field]');
     if (!field) return;
@@ -81,42 +80,45 @@
     };
 
     const errors = validate(values);
-
-    // Clear then re-apply so old messages disappear
     clearAll();
 
     const errorKeys = Object.keys(errors);
     if (errorKeys.length > 0) {
       errorKeys.forEach(function (key) { setFieldError(key, errors[key]); });
-
-      // Focus the first invalid field
-      const first = form.querySelector('[data-field="' + errorKeys[0] + '"] .form__input, [data-field="' + errorKeys[0] + '"] .form__textarea');
+      const first = form.querySelector(
+        '[data-field="' + errorKeys[0] + '"] .form__input, ' +
+        '[data-field="' + errorKeys[0] + '"] .form__textarea'
+      );
       if (first) first.focus();
       return;
     }
 
-    // All valid — try Netlify if we're on Netlify, otherwise just simulate
-    const isNetlify = form.hasAttribute('data-netlify') && window.location.hostname.endsWith('netlify.app');
+    // All valid — POST to Netlify Forms using the encoded-form pattern
+    const encoded = new URLSearchParams(new FormData(form)).toString();
 
-    if (isNetlify) {
-      // Encode and POST to Netlify Forms
-      const encoded = new URLSearchParams(new FormData(form)).toString();
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encoded
-      })
-        .then(function () {
-          form.reset();
-          if (successEl) successEl.hidden = false;
-        })
-        .catch(function () {
-          setFieldError('message', 'Something went wrong sending the message. Please try again.');
-        });
-    } else {
-      // Local preview / GitHub Pages: simulate success
-      form.reset();
-      if (successEl) successEl.hidden = false;
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
     }
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encoded
+    })
+      .then(function (response) {
+        if (!response.ok) throw new Error('Network response was not OK');
+        form.reset();
+        if (successEl) successEl.hidden = false;
+      })
+      .catch(function () {
+        setFieldError('message', 'Something went wrong sending the message. Please try again.');
+      })
+      .finally(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message →';
+        }
+      });
   });
 })();
