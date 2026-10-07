@@ -6,8 +6,9 @@ Built as the final assignment for **Internet and Web Services**
 
 ## Live site
 
-🔗 **[bece20-bchapuma-ai.github.io/personal-portfolio](https://bece20-bchapuma-ai.github.io/personal-portfolio/)**
+**Primary (GitHub Pages):** **[bece20-bchapuma-ai.github.io/personal-portfolio](https://bece20-bchapuma-ai.github.io/personal-portfolio/)**
 
+**Mirror (Netlify, with working contact form):** **[ben-chapuma-portfolio.netlify.app](https://ben-chapuma-portfolio.netlify.app)**
 ## Figma design
 
 🎨 **[Figma design file](https://www.figma.com/design/IUuWZsVVL4nXDM9m0IQHB5/Personal-Portfolio?node-id=2-2&t=gOdfueuhnGFINifs-1)**
